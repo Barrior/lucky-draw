@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     getDisplayName(index) {
-      const rawItem = this.rawList[index];
+      const rawItem = this.rawList[index - 1];
       if (rawItem) {
         return rawItem.name || index;
       }
