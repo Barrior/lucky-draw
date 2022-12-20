@@ -37,7 +37,7 @@
           :key="j"
           :data-res="data"
         >
-          {{ rawList[data].name }}
+          {{ getDisplayName(data) }}
         </span>
       </span>
     </div>
@@ -81,6 +81,13 @@ export default {
     }
   },
   methods: {
+    getDisplayName(index) {
+      const rawItem = this.rawList[index];
+      if (rawItem) {
+        return rawItem.name || index;
+      }
+      return index;
+    },
     deleteRes(event, row) {
       const Index = getDomData(event.target, 'res');
       if (!Index) {
