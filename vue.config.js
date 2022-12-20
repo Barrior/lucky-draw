@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/lucky-draw' : '/'
+  outputDir: 'docs',
+  publicPath: process.env.NODE_ENV === 'production' ? '/lucky-draw/docs' : '/'
 };
