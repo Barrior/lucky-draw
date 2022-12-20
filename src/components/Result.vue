@@ -2,7 +2,7 @@
   <el-dialog
     :visible="visible"
     @close="$emit('update:visible', false)"
-    width="600px"
+    width="660px"
     class="c-Result"
     :append-to-body="true"
   >
@@ -37,7 +37,7 @@
           :key="j"
           :data-res="data"
         >
-          {{ data }}
+          {{ rawList[data].name }}
         </span>
       </span>
     </div>
@@ -51,6 +51,11 @@ export default {
     visible: Boolean
   },
   computed: {
+    rawList: {
+      get() {
+        return this.$store.state.list;
+      }
+    },
     result: {
       get() {
         return this.$store.state.result;

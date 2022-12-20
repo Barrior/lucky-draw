@@ -87,9 +87,9 @@
         type="textarea"
         :rows="10"
         placeholder="请输入对应的号码和名单(可直接从excel复制)，格式(号码 名字)，导入的名单将代替号码显示在抽奖中。如：
-1 张三
-2 李四
-3 王五
+张三
+李四
+王五
 				"
         v-model="listStr"
       ></el-input>
@@ -298,21 +298,18 @@ export default {
         this.$message.error('没有数据');
       }
       const list = [];
-      const rows = listStr.split('\n');
+      const rows = listStr.trim().split('\n');
       if (rows && rows.length > 0) {
-        rows.forEach(item => {
-          const rowList = item.split(/\t|\s/);
-          if (rowList.length >= 2) {
-            const key = Number(rowList[0].trim());
-            const name = rowList[1].trim();
-            key &&
-              list.push({
-                key,
-                name
-              });
+        rows.forEach((name, index) => {
+          if (name) {
+            list.push({
+              key: index + 1,
+              name
+            });
           }
         });
       }
+
       this.$store.commit('setList', list);
 
       this.$message({
